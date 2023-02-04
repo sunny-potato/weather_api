@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  box-sizing: border-box;
+}
+.pageContainer {
+  display: flex;
+  height: 100vh;
+}
+.searchContainer {
+  flex: 1;
+  background-color: lightskyblue;
+}
+.searchBar {
+  width: 70%;
+  margin: auto;
+  position: relative;
+}
+.searchText {
+  width: 100%;
+  /* min-width: 8rem; */
+  min-height: 2rem;
+  border-radius: 0.7rem;
+  border: none;
+  padding: 0.2rem 0.5rem;
+}
+.searchIcon {
+  position: absolute;
+  top: 0%;
+  right: 2%;
+  padding-top: 0.3rem;
+  border: none;
+  background: transparent;
+  color: lightgray;
+  /* border-radius: 50%; */
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+/* display*/
+.displayContainer {
+  flex: 1;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  height: 100%;
+
+  /* position: relative; */
+}
+
+.localDateTime {
+  /* background: lightblue; */
+  text-align: right;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  /* background: white; */
+  font-size: 3rem;
+  font-weight: 700;
+}
+/* .city {
+  font-size: 4.5rem;
+  font-weight: 700;
+} */
+
+.country {
+  padding-left: 1rem;
+}
+.currentWeather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: green; */
+}
+.currentTemperature {
+  /* position: absolute; */
+  font-size: 10rem;
+  font-weight: 700;
+  /* background-color: black; */
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 100) 0%,
+    rgba(255, 255, 255, 20) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-clip: text;
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+
+  line-height: 9rem;
+  z-index: 1;
+}
+.currentImage {
+  position: relative;
+  width: 20rem;
+  height: 16rem;
+  /* background-color: greenyellow; */
+}
+.currentText {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.currentExtraInformation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+.currentExtraInformation > div {
+  margin: 1rem;
+  text-align: center;
+}
