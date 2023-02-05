@@ -11,61 +11,77 @@
 }
 .searchContainer {
   flex: 1;
-  background-color: lightskyblue;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(212, 212, 212, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  /* opacity: 0.2; */
+  /* display: flex; */
+  display: none;
+  padding-top: 3rem;
+}
+.searchSection {
+  flex: 7;
+  color: black;
+}
+.iconSection {
+  background-color: rgba(212, 212, 212, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 100;
 }
 .searchBar {
-  width: 70%;
+  width: 80%;
   margin: auto;
   position: relative;
 }
 .searchText {
   width: 100%;
-  /* min-width: 8rem; */
-  min-height: 2rem;
+  min-height: 3rem;
   border-radius: 0.7rem;
   border: none;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem;
+  color: black;
 }
 .searchIcon {
   position: absolute;
   top: 0%;
-  right: 2%;
-  padding-top: 0.3rem;
+  right: 3%;
+  bottom: 0%;
+  padding-top: 0.8rem;
   border: none;
-  background: transparent;
   color: lightgray;
-  /* border-radius: 50%; */
 }
 
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
+.menuIcon {
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+}
 
 /* display*/
 .displayContainer {
-  flex: 1;
+  flex: 2;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   height: 100%;
-
-  /* position: relative; */
 }
 
 .localDateTime {
-  /* background: lightblue; */
   text-align: right;
+  padding-right: 1rem;
+  font-size: 1.5rem;
 }
 
 .location {
   display: flex;
   justify-content: center;
-  /* background: white; */
   font-size: 3rem;
   font-weight: 700;
 }
-/* .city {
-  font-size: 4.5rem;
-  font-weight: 700;
-} */
 
 .country {
   padding-left: 1rem;
@@ -74,13 +90,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: green; */
 }
 .currentTemperature {
-  /* position: absolute; */
   font-size: 10rem;
   font-weight: 700;
-  /* background-color: black; */
   background-image: linear-gradient(
     180deg,
     rgba(255, 255, 255, 100) 0%,
@@ -101,7 +114,6 @@
   position: relative;
   width: 20rem;
   height: 16rem;
-  /* background-color: greenyellow; */
 }
 .currentText {
   font-size: 2rem;
