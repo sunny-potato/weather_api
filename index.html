@@ -14,12 +14,11 @@
       <div class="searchContainer">
         <div class="searchSection">
           <div class="searchBar">
-            <input class="searchText" placeholder="Search location" />
+            <input type="text" class="searchText" placeholder="Search location" />
             <span class="material-symbols-outlined searchIcon">
               search
             </span>
           </div>
-          <!-- <div>HELLO SUNHEE</div> -->
         </div>
       </div>
       <div class="iconSection"><span class="material-symbols-outlined menuIcon">
@@ -66,13 +65,25 @@
             <div class="informationTitle">Humidity</div>
             <div class="humidityLevel"></div>
           </div>
-          <div class>
-            <div class="informationTitle">Wind</div>
-            <div class="windLevel"></div>
+          <div>
+            <div class="informationTitle">Wind </div>
+            <div class="levelContainer">
+              <div class="windLevel"></div>
+              <span class="material-symbols-outlined">
+                tips_and_updates
+              </span>
+              <div class="toolTip wind"></div>
+            </div>
           </div>
           <div>
             <div class="informationTitle">UV</div>
-            <div class="uvLevel"></div>
+            <div class="levelContainer">
+              <div class="uvLevel"></div>
+              <span class="material-symbols-outlined">
+                tips_and_updates
+              </span>
+              <div class="toolTip uv"></div>
+            </div>
           </div>
         </div>
         <!-- <div>feelslike_c</div> -->
@@ -80,7 +91,5 @@
     </div>
     <script type="module" src="src/js/main.js"></script>
   </body>
-
-
 
 </html>

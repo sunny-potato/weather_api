@@ -21,7 +21,6 @@ const daysOftheWeek = [
   "Friday",
   "Saturday",
 ];
-const date = "2023-02-05 17:41";
 
 export function getLocalDate(date) {
   const localYear = date.slice(0, 4);
@@ -29,33 +28,58 @@ export function getLocalDate(date) {
   const localMonth = months[slicedMonth - 1];
   const localDate = Number(date.slice(8, 10));
   let localDay;
-  //   console.log(localYear, slicedMonth, localMonth, localDate);
-  const clientLocalDate = new Date();
-  //   console.log("clientlocaldate : ");
-  const dateDifference = localDate - clientLocalDate.getDate();
-  console.log(
-    dateDifference,
-    localDate,
-    clientLocalDate.getDate(),
-    clientLocalDate.getDay() + 1
-  );
-  if (dateDifference == 0) {
-    localDay = daysOftheWeek[clientLocalDate.getDay()];
-  } else if (dateDifference == -1) {
-    localDay = daysOftheWeek[clientLocalDate.getDay() - 1];
-  } else if (dateDifference == 1) {
-    localDay = daysOftheWeek[clientLocalDate.getDay() + 1];
+  const clientLocal = new Date();
+  const clientLocalDate = clientLocal.getDate();
+  const clientLocalDay = clientLocal.getDay();
+
+  if (localDate == clientLocalDate) {
+    localDay = daysOftheWeek[clientLocalDay];
+  } else if (localDate > clientLocalDate) {
+    localDay = daysOftheWeek[clientLocalDay + 1];
+    if (clientLocalDay == 6) {
+      localDay = daysOftheWeek[0];
+    }
+  } else {
+    localDay = daysOftheWeek[clientLocalDay - 1];
+    if (clientLocalDay == 0) {
+      local = daysOftheWeek[6];
+    }
   }
-  //   console.log(localDay);
   const completeLocalDate = `${localDay}, ${localDate} ${localMonth} ${localYear}`;
-  //   console.log(completeLocalDate);
-  return completeLocalDate;
+  displayLocalDate(completeLocalDate);
 }
 
-export function getLocalTime(time) {
-  const localHour = Number(time.slice(11, 13));
-  const localMinute = Number(time.slice(14, 16));
-  const completeLocalTime = `${localHour} : ${localMinute}`;
-  //   console.log(completeLocalTime);
-  return completeLocalTime;
+function displayLocalDate(data) {
+  const localFullDate = document.querySelector(".localDate");
+  localFullDate.innerHTML = `${data}`;
 }
+
+export function getLocalTime(localTimeZone) {
+  const searchedTimezone = new Date().toLocaleString("en-GB", {
+    timeZone: localTimeZone,
+  });
+  let localHours = new Date(searchedTimezone).getHours();
+  let localMinutes = new Date(searchedTimezone).getMinutes();
+  let localSeconds = new Date(searchedTimezone).getSeconds();
+  let amORpm = "AM";
+
+  if (localHours > 12) {
+    localHours = localHours - 12;
+    amORpm = "PM";
+  }
+  if (localHours < 10) {
+    localHours = `0${localHours}`;
+  }
+  if (localMinutes < 10) {
+    localMinutes = `0${localMinutes}`;
+  }
+  if (localSeconds < 10) {
+    localSeconds = `0${localSeconds}`;
+  }
+
+  const completeLocalTime = `${localHours} : ${localMinutes} : ${localSeconds} ${amORpm}`;
+  // console.log(localTimeZone, completeLocalTime);
+  const localFullTime = document.querySelector(".localTime");
+  localFullTime.innerHTML = `${completeLocalTime}`;
+}
+export const displayLocalTime = setInterval(getLocalTime, 1000);

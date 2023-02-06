@@ -1,4 +1,4 @@
-// weahter image by day & night
+import { rainEffect, snowEffect, lightningEffect } from "./animationEffect";
 
 const cloudCodes = [
   1006, 1009, 1030, 1072, 1114, 1135, 1147, 1150, 1153, 1168, 1171, 1183, 1189,
@@ -11,26 +11,37 @@ const combinationCodes = [
 ];
 
 export function getWeatherImage(code, isDay) {
+  const cloudImage = document.querySelector(".cloud");
+  const moonImage = document.querySelector(".moon");
+  const sunImage = document.querySelector(".sun");
+  const moonCloudImage = document.querySelector(".moonCloud");
+  const sunCloudImage = document.querySelector(".sunCloud");
+  const listOfImages = [
+    cloudImage,
+    moonImage,
+    sunImage,
+    moonCloudImage,
+    sunCloudImage,
+  ];
+  for (let i = 0; i < listOfImages.length; i++) {
+    listOfImages[i].style.visibility = "hidden";
+  }
+
   const isCloudy = cloudCodes.includes(code);
   const isSunOrMoon = sunOrMoonCodes.includes(code);
   const isCombination = combinationCodes.includes(code);
   if (isCloudy) {
-    const cloudImage = document.querySelector(".cloud");
     cloudImage.style.visibility = "visible";
   } else if (isSunOrMoon) {
     if (isDay == 0) {
-      const moonImage = document.querySelector(".moon");
       moonImage.style.visibility = "visible";
     } else {
-      const sunImage = document.querySelector(".sun");
       sunImage.style.visibility = "visible";
     }
   } else if (isCombination) {
     if (isDay == 0) {
-      const moonCloudImage = document.querySelector(".moonCloud");
       moonCloudImage.style.visibility = "visible";
     } else {
-      const sunCloudImage = document.querySelector(".sunCloud");
       sunCloudImage.style.visibility = "visible";
     }
   } else {
@@ -51,11 +62,14 @@ const lightningRainCodes = [1279, 1282];
 const nothingCodes = [1135, 1147];
 
 export function getWeatherAnimation(code) {
+  removeAllEffects();
+
   const isSnow = snowCodes.includes(code);
   const isRainy = rainCodes.includes(code);
   const isSnowRainy = snowRainCodes.includes(code);
   const isLightning = lightningCodes.includes(code);
   const isLightningRain = lightningRainCodes.includes(code);
+
   if (isSnow) {
     snowEffect();
   } else if (isRainy) {
@@ -71,20 +85,27 @@ export function getWeatherAnimation(code) {
   }
 }
 
+function removeAllEffects() {
+  const animationEffect = document.querySelector(".animationEffect");
+  while (animationEffect.firstChild) {
+    animationEffect.removeChild(animationEffect.firstChild);
+  }
+}
+
 export function getWeatherBackGround(code) {
   const isCloudy = cloudCodes.includes(code);
   const isSunOrMoon = sunOrMoonCodes.includes(code);
   const isCombination = combinationCodes.includes(code);
-  const displayContainer = document.querySelector(".displayContainer");
+  const pageContainer = document.querySelector(".pageContainer");
   if (isCloudy) {
-    displayContainer.style.backgroundImage =
+    pageContainer.style.background =
       "linear-gradient(120deg, #85ffbd 0%, #f574b9 100%)";
   } else if (isSunOrMoon) {
-    displayContainer.style.backgroundImage =
+    pageContainer.style.background =
       "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)";
   } else if (isCombination) {
-    displayContainer.style.backgroundImage =
-      "linear-gradient(120deg, #85FFBD 0%, #FFFB7D 90%)";
+    pageContainer.style.background =
+      "linear-gradient(120deg, #2b5876 0%, #4e4376 100%)";
   } else {
     // when not found, image
   }
