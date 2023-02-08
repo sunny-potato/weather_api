@@ -1,4 +1,4 @@
-const months = [
+export const months = [
   "January",
   "February",
   "March",
@@ -88,4 +88,4 @@ export function getLocalTime() {
   const localFullTime = document.querySelector(".localTime");
   localFullTime.innerHTML = `${completeLocalTime}`;
 }
-export const displayLocalTime = setInterval(getLocalTime, 1000);
+setInterval(getLocalTime, 1000);

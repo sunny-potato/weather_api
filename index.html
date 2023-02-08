@@ -12,7 +12,7 @@
   <body>
     <div class="pageContainer">
       <div class="searchContainer">
-        <div class="searchSection">
+        <div class="searchWrapper">
           <div class="searchBar">
             <input type="text" class="searchText" placeholder="Search location (city or country)" />
             <span class="material-symbols-outlined searchIcon">
@@ -77,9 +77,29 @@
               </div>
             </div>
           </div>
+          <div class="futureWeatherContainer">
+            <div class="future day1">
+              <div class="futureDate"></div>
+              <div class="futureTemperature"></div>
+              <div class="futureImage"></div>
+              <div class="futureCondition"></div>
+            </div>
+            <div class="future day2">
+              <div class="futureDate"></div>
+              <div class="futureTemperature"></div>
+              <div class="futureImage"></div>
+              <div class="futureCondition"></div>
+            </div>
+            <div class="future day3">
+              <div class="futureDate"></div>
+              <div class="futureTemperature"></div>
+              <div class="futureImage"></div>
+              <div class="futureCondition"></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class=" iconSection"><span class="material-symbols-outlined menuIcon">
+      <div class="iconContainer"><span class="material-symbols-outlined menuIcon">
           menu
         </span></div>
       <div class="displayContainer">
@@ -123,9 +143,6 @@
             <canvas class="lineChart"></canvas>
             <div class="timeline"></div>
           </div>
-
-          <!-- <div class="maxTemperature"></div>
-          <div class="minTemperature"></div> -->
         </div>
       </div>
     </div>

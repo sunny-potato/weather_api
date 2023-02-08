@@ -99,13 +99,13 @@ export function getWeatherBackGround(code) {
   const pageContainer = document.querySelector(".pageContainer");
   if (isCloudy) {
     pageContainer.style.background =
-      "linear-gradient(120deg, #85ffbd 0%, #f574b9 100%)";
+      "linear-gradient(120deg, #19547b 0%, #ffd89b 100%)";
   } else if (isSunOrMoon) {
     pageContainer.style.background =
-      "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)";
+      "linear-gradient(120deg, #614385 0%, #516395 100%)";
   } else if (isCombination) {
     pageContainer.style.background =
-      "linear-gradient(120deg, #2b5876 0%, #4e4376 100%)";
+      "linear-gradient(120deg, #f574b9 0%, #85ffbd 100%)";
   } else {
     // when not found, image
   }

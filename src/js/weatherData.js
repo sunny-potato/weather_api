@@ -3,7 +3,7 @@ import {
   getWeatherAnimation,
   getWeatherBackGround,
 } from "./weatherCondition";
-import { getUvIndex, getWindScale } from "./weatherExtraData";
+import { getUvIndex } from "./weatherExtraData";
 
 export function displayWeatherData(data) {
   const city = document.querySelector(".city");
@@ -32,11 +32,6 @@ export function displayWeatherExtraData(data) {
   const cloudData = document.querySelector(".cloudData");
   const humidityData = document.querySelector(".humidityData");
   const windData = document.querySelector(".windData");
-
-  // const windTooltip = document.querySelector(".toolTip.wind");
-  // const uvTooltip = document.querySelector(".toolTip.uv");
-
-  // console.log(data.forecast.forecastday[0].day.daily_chance_of_rain);
 
   feelsLikeData.innerHTML = `${data.current.feelslike_c}°C`;
   chanceOfRainData.innerHTML = `${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
