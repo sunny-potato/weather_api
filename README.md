@@ -14,7 +14,7 @@ This project is to provide current and forecasted weather data on searched locat
 
 - Link to the project
   -> ![Weather API](address)
-  -> ![](screenshot)
+  -> ![](weather_api.gif)
 
 ## Getting started
 
