@@ -12,9 +12,8 @@ This project is to provide current and forecasted weather data on searched locat
 
 ## Link
 
-- Link to the project
-  -> ![Weather API](https://weather-api-sunhee.netlify.app/)
-  -> ![](weather_api.gif)
+- Link to the project -> [Weather API](https://weather-api-sunhee.netlify.app/)
+- ![](weather_api.gif)
 
 ## Getting started
 
