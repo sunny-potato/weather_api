@@ -30,7 +30,6 @@ function drawHorizontalLines() {
     }
 
     lineChart.lineWidth = 0.2;
-    lineChart.strokeStyle = "#000";
     lineChart.stroke();
   }
 }
@@ -48,7 +47,6 @@ function drawVerticalLines() {
     }
 
     lineChart.lineWidth = 0.2;
-    lineChart.strokeStyle = "#000";
     lineChart.stroke();
   }
 }
@@ -59,13 +57,11 @@ function addTimeLine() {
     timeline.removeChild(timeline.firstChild);
   }
   let hours = [];
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < x; i++) {
     hours.push(i);
   }
   for (let i = 0; i < hours.length; i++) {
     const hour = document.createElement("span");
-    // hour.className = "timeHour";
-    // hour.style.width = `${xWidth}px`;
     const hourText = document.createTextNode(hours[i]);
     hour.appendChild(hourText);
     timeline.appendChild(hour);
@@ -73,7 +69,6 @@ function addTimeLine() {
 }
 
 export function drawLineChart(temperatures) {
-  // console.log(temperatures);
   lineChart.clearRect(0, 0, chartWidth, chartHeight);
   const max = Math.max(...temperatures);
   const min = Math.min(...temperatures);
@@ -96,13 +91,6 @@ export function drawLineChart(temperatures) {
       chartHeight - nextFixedInterval * yHeight - yHeight
     );
 
-    // console.log(
-    //   i,
-    //   xWidth * (i + 1),
-    //   chartHeight - currentFixedInterval * yHeight - yHeight,
-    //   xWidth * (i + 2),
-    //   chartHeight - nextFixedInterval * yHeight - yHeight
-    // );
     lineChart.lineWidth = 3;
     lineChart.strokeStyle = "#fff";
     lineChart.stroke();
@@ -122,7 +110,6 @@ export function drawLineChart(temperatures) {
   drawMinMaxTemperature(MaxPosX, MaxPosY);
   drawMinMaxTemperature(MinPosX, MinPosY);
 
-  // console.log(max, maxIndex, min, minIndex, xWidth);
   return { temperatures, maxIndex, minIndex };
 }
 
@@ -135,13 +122,23 @@ function drawMinMaxTemperature(posX, posY) {
 }
 
 export function displayMinMaxTemperature(minMaxIndexes) {
-  // console.log(minMaxIndexes.minIndex);
-  const minIndex = minMaxIndexes.minIndex + 1;
-  // const minTemperature = document.querySelector(
-  //   `.timeline > span:nth-child(${minIndex}) `
-  // );
-  // minTemperature.style.setProperty("--minTemperatureAfterContent", "");
-  // minTemperature.style.setProperty("--minTemperatureAfterBackColor", "red");
-  // const test = window.getComputedStyle(minTemperature, ":before").
-  // CSSStyleSheet.insertRule()
+  const minIndex = minMaxIndexes.minIndex;
+  const maxIndex = minMaxIndexes.maxIndex;
+  const minTemperature = minMaxIndexes.temperatures[minIndex];
+  const maxTemperature = minMaxIndexes.temperatures[maxIndex];
+  const minPoint = document.querySelector(
+    `.timeline > span:nth-child(${minIndex + 1}) `
+  );
+
+  const maxPoint = document.querySelector(
+    `.timeline > span:nth-child(${maxIndex + 1}) `
+  );
+  minPoint.className = "minPoint";
+  maxPoint.className = "maxPoint";
+
+  // 2 ways to set text in content of pseudo-element
+  // 1) minPoint.setAttribute("data-minPoint", `Min ${minTemperature}`);
+  // 2)
+  minPoint.dataset.content = `Min ${minTemperature}°`;
+  maxPoint.dataset.content = `Max ${maxTemperature}°`;
 }

@@ -61,7 +61,6 @@ export function setTimeZone(timeZone) {
 }
 
 export function getLocalTime() {
-  // console.log({ localTimeZone });
   const searchedTimezone = new Date().toLocaleString("en-GB", {
     timeZone: localTimeZone,
   });

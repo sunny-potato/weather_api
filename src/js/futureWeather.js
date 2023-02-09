@@ -1,5 +1,5 @@
 import { months } from "./dateTime";
-// import { getWeatherImage } from "./weatherCondition";
+
 export function displayFutureWeatherData(data) {
   const days = 3;
   for (let i = 1; i <= days; i++) {
@@ -22,25 +22,10 @@ export function displayFutureWeatherData(data) {
     futureTemperature.innerHTML = `${temperature}°`;
 
     // image
-    // const code = data.forecast.forecastday[i].day.condition.code;
     const icon = data.forecast.forecastday[i].day.condition.icon;
-    // console.log(data.forecast.forecastday[i].day.condition.icon);
     const image = document.createElement("img");
     image.src = `${icon}`;
     futureImage.appendChild(image);
-    // const weatherImages = [
-    //   "clear_day",
-    //   "thunderstorm",
-    //   "cloudy_snowing",
-    //   "sunny_snowing",
-    //   "snowing",
-    //   "tornado",
-    //   "weather_snowy",
-    //   "rainy",
-    //   "cloudy",
-    //   "partly_cloudy_day",
-    // ];
-    // <span class="material-symbols-outlined">clear_day</span>;
 
     // condition
     const futureCondition = document.querySelector(

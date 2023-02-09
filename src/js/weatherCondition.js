@@ -1,4 +1,4 @@
-import { rainEffect, snowEffect, lightningEffect } from "./animationEffect";
+import { rainEffect, snowEffect, lightningEffect } from "./weatherAnimation";
 
 const cloudCodes = [
   1006, 1009, 1030, 1072, 1114, 1135, 1147, 1150, 1153, 1168, 1171, 1183, 1189,
@@ -102,7 +102,7 @@ export function getWeatherBackGround(code) {
       "linear-gradient(120deg, #19547b 0%, #ffd89b 100%)";
   } else if (isSunOrMoon) {
     pageContainer.style.background =
-      "linear-gradient(120deg, #614385 0%, #516395 100%)";
+      "linear-gradient(120deg, #516395 0%, #614385 100%)";
   } else if (isCombination) {
     pageContainer.style.background =
       "linear-gradient(120deg, #f574b9 0%, #85ffbd 100%)";

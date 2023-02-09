@@ -14,13 +14,14 @@
       <div class="searchContainer">
         <div class="searchWrapper">
           <div class="searchBar">
-            <input type="text" class="searchText" placeholder="Search location (city or country)" />
+            <input type="text" class="searchText"
+              placeholder="Search location (city or/and country) ex) trondheim norway" />
             <span class="material-symbols-outlined searchIcon">
               search
             </span>
+            <div class="searchError"></div>
           </div>
           <div class="informationContainer">
-            <!-- <div class="informationTitle"></div> -->
             <div class="informationWrapper">
               <div class="icon"><span class="material-symbols-outlined">
                   mood
@@ -142,6 +143,19 @@
           <div class="lineChartWrapper">
             <canvas class="lineChart"></canvas>
             <div class="timeline"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="errorContainer">
+      <div class="errorWrapper">
+        <div class="errorMessage">Can't get data. Please try it later. </div>
+        <div class="errorImage">
+          <div class="noFound">
+            <div class="eye left">x</div>
+            <div class="eye right">x</div>
+            <div class="lip">)</div>
           </div>
         </div>
       </div>

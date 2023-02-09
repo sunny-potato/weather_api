@@ -19,16 +19,21 @@
 }
 .searchWrapper {
   height: 100%;
-  /* background-color: lightblue; */
   padding-top: 4rem;
-  /* flex: 7; */
-  /* color: black; */
 }
 .searchBar {
   width: 90%;
   margin: auto;
   position: relative;
-  /* padding-bottom: 1rem; */
+}
+.searchError {
+  display: none;
+  position: absolute;
+  width: 100%;
+  padding: 0.2rem 0.5rem;
+  background: rgb(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 0.5rem;
 }
 .searchText {
   width: 100%;
@@ -52,7 +57,6 @@
 }
 
 /*extra information with icons*/
-
 .informationContainer {
   width: 90%;
   display: grid;
@@ -136,12 +140,10 @@
   font-weight: 700;
 }
 .location > span {
-  /* background-color: black; */
   padding-right: 0.2rem;
 }
 .city {
   max-height: 3rem;
-  /* background-color: white; */
 }
 
 .country {
@@ -183,27 +185,4 @@
   font-weight: 700;
   color: #fff;
   opacity: 0.7;
-}
-/* lineChart */
-.lineChartContainer {
-  /* z-index: 1000; */
-  /* padding: 2rem 0; */
-  /* background-color: black; */
-}
-.lineChartWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 40rem;
-  margin: auto;
-}
-.lineChart {
-  width: 100%;
-}
-.timeline {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-}
-.timeline > span {
-  font-size: 0.5rem;
 }

@@ -1,6 +1,8 @@
 import "../css/main.css";
 import "../css/weatherImages.css";
-import "../css/animationEffect.css";
+import "../css/weatherAnimation.css";
+import "../css/lineChart.css";
+import "../css/error.css";
 import { callApi } from "./api";
 import { getLocalDate, setTimeZone } from "./dateTime";
 import { displayWeatherData, displayWeatherExtraData } from "./weatherData";
@@ -10,6 +12,7 @@ import {
   displayMinMaxTemperature,
 } from "./lineChart";
 import { displayFutureWeatherData } from "./futureWeather";
+import { getInvalidRequest, deleteErrorMessage } from "./error";
 
 // default data when pageloaded
 const defaultApiData = await callApi("oslo");
@@ -19,10 +22,15 @@ console.log(defaultApiData);
 //search result for location
 const inputText = document.querySelector(".searchText");
 inputText.addEventListener("keydown", (event) => {
+  deleteErrorMessage();
   if (event.key == "Enter") {
     const keyword = event.target.value;
     callApi(keyword).then((data) => {
-      displayAllData(data);
+      if (data.error) {
+        getInvalidRequest(data.error);
+      } else {
+        displayAllData(data);
+      }
     });
   }
 });

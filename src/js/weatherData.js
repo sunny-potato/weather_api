@@ -36,16 +36,8 @@ export function displayWeatherExtraData(data) {
   feelsLikeData.innerHTML = `${data.current.feelslike_c}°C`;
   chanceOfRainData.innerHTML = `${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
   const uv = getUvIndex(data.current.uv);
-  // console.log(uv.level, uv.description);
   uvData.innerHTML = `${uv.level}`;
   cloudData.innerHTML = `${data.current.cloud}%`;
   humidityData.innerHTML = `${data.current.humidity}%`;
   windData.innerHTML = `${data.current.wind_mph}mph`;
-  // const wind = getWindScale(data.current.wind_mph);
-  // console.log(wind.level, wind.description);
-  // windLevel.innerHTML = `${wind.level}`;
-  // windTooltip.innerHTML = `${wind.description}`;
-  // const uv = getUvIndex(data.current.uv);
-  // uvLevel.innerHTML = `${uv.level}`;
-  // uvTooltip.innerHTML = `${uv.description}`;
 }

@@ -14,7 +14,6 @@ export function rainEffect() {
     animationEffect.appendChild(drop);
   }
 }
-// rainEffect();
 
 export function snowEffect() {
   for (let i = 0; i < 50; i++) {
@@ -31,8 +30,6 @@ export function snowEffect() {
     animationEffect.appendChild(snow);
   }
 }
-
-// snowEffect();
 
 export function lightningEffect() {
   for (let i = 0; i < 40; i++) {
@@ -52,5 +49,3 @@ export function lightningEffect() {
     animationEffect.appendChild(lightning);
   }
 }
-
-// lightningEffect();
