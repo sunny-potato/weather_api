@@ -23,8 +23,14 @@ export function getWeatherImage(code, isDay) {
     moonCloudImage,
     sunCloudImage,
   ];
-  for (let i = 0; i < listOfImages.length; i++) {
-    listOfImages[i].style.visibility = "hidden";
+
+  // for (let i = 0; i < listOfImages.length; i++) {
+  //   listOfImages[i].style.visibility = "hidden";
+  // }
+
+  // Fancy måte
+  for (const image of listOfImages) {
+    image.style.visibility = "hidden";
   }
 
   const isCloudy = cloudCodes.includes(code);
@@ -33,16 +39,16 @@ export function getWeatherImage(code, isDay) {
   if (isCloudy) {
     cloudImage.style.visibility = "visible";
   } else if (isSunOrMoon) {
-    if (isDay == 0) {
-      moonImage.style.visibility = "visible";
-    } else {
+    if (isDay) {
       sunImage.style.visibility = "visible";
+    } else {
+      moonImage.style.visibility = "visible";
     }
   } else if (isCombination) {
-    if (isDay == 0) {
-      moonCloudImage.style.visibility = "visible";
-    } else {
+    if (isDay) {
       sunCloudImage.style.visibility = "visible";
+    } else {
+      moonCloudImage.style.visibility = "visible";
     }
   } else {
     // when not found, image

@@ -103,35 +103,34 @@
 
 // uv index : https://www.who.int/news-room/questions-and-answers/item/radiation-the-ultraviolet-(uv)-index
 export function getUvIndex(uvIndex) {
-  let uvCondition;
   if (uvIndex <= 2) {
-    return (uvCondition = {
+    return {
       level: "Low",
       description: "You can safely enjoy being outside!",
-    });
+    };
   } else if (uvIndex > 2 && uvIndex <= 5) {
-    return (uvCondition = {
+    return {
       level: "Moderate",
       description:
         "Seek shade during midday hours! Slip on a shirt, slop on sunscreen and slap on hat!",
-    });
+    };
   } else if (uvIndex > 5 && uvIndex <= 7) {
-    return (uvCondition = {
+    return {
       level: "High",
       description:
         "Seek shade during midday hours! Slip on a shirt, slop on sunscreen and slap on hat!",
-    });
+    };
   } else if (uvIndex > 7 && uvIndex <= 10) {
-    return (uvCondition = {
+    return {
       level: "Very high",
       description:
         "	Avoid being outside during midday hours! Make sure you seek shade! Shirt, sunscreen and hat are a must!",
-    });
+    };
   } else if (uvIndex > 10) {
-    return (uvCondition = {
+    return {
       level: "Extreme",
       description:
         "	Avoid being outside during midday hours! Make sure you seek shade! Shirt, sunscreen and hat are a must!",
-    });
+    };
   }
 }

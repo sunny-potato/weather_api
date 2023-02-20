@@ -4,7 +4,7 @@ export function displayError() {
   const errorContainer = document.querySelector(".errorContainer");
   errorContainer.style.display = "block";
   const noFound = document.querySelector(".noFound");
-  noFound.style.visibility = "visible";
+  // noFound.style.visibility = "visible";
 }
 
 export function getInvalidRequest(error) {

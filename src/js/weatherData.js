@@ -18,7 +18,7 @@ export function displayWeatherData(data) {
 
   // weather image & animationeffect & background
   const weatherConditionCode = data.current.condition.code;
-  const isDay = data.current.is_day; // 1 = Yes 0 = No
+  const isDay = data.current.is_day === 1; // 1 = Yes 0 = No
   getWeatherImage(weatherConditionCode, isDay);
   getWeatherAnimation(weatherConditionCode);
   getWeatherBackGround(weatherConditionCode);

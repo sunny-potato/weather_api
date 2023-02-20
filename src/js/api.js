@@ -6,12 +6,14 @@ export async function callApi(location) {
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=4&aqi=no`
     );
+
     const data = await response.json();
 
     if (!response.ok) {
       console.log(response.status);
       console.log(data.error.message);
     }
+
     return data;
   } catch (error) {
     console.log(error);

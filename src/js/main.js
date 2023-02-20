@@ -14,40 +14,49 @@ import {
 import { displayFutureWeatherData } from "./futureWeather";
 import { getInvalidRequest, deleteErrorMessage } from "./error";
 
-// default data when pageloaded
-const defaultApiData = await callApi("oslo");
-displayAllData(defaultApiData);
-console.log(defaultApiData);
+loadDefaultData();
+setupSearchField();
+setupMenu();
 
-//search result for location
-const inputText = document.querySelector(".searchText");
-inputText.addEventListener("keydown", (event) => {
-  deleteErrorMessage();
-  if (event.key == "Enter") {
-    const keyword = event.target.value;
-    callApi(keyword).then((data) => {
+async function loadDefaultData() {
+  const defaultApiData = await callApi("oslo");
+  displayDateAndTimeData(defaultApiData);
+  displayAllWeatherData(defaultApiData);
+  displayLineChardData(defaultApiData);
+  // console.log(defaultApiData);
+}
+
+function setupSearchField() {
+  const inputText = document.querySelector(".searchText");
+  inputText.addEventListener("keydown", async (event) => {
+    deleteErrorMessage();
+    if (event.key === "Enter") {
+      const keyword = event.target.value;
+      const data = await callApi(keyword);
       if (data.error) {
         getInvalidRequest(data.error);
       } else {
-        displayAllData(data);
+        displayAllWeatherData(data);
       }
-    });
-  }
-});
+    }
+  });
+}
 
-function displayAllData(data) {
-  //date & time
+function displayDateAndTimeData(data) {
   const date = data.location.localtime;
   getLocalDate(date);
   const localTimeZone = data.location.tz_id;
   setTimeZone(localTimeZone);
+}
 
-  // weather data
+function displayAllWeatherData(data) {
   displayWeatherData(data);
   displayWeatherExtraData(data);
+  // console.log(data);
   displayFutureWeatherData(data);
+}
 
-  // line chart
+function displayLineChardData(data) {
   const temperatures = getTemperaturePerHour(data);
   const minMaxIndexes = drawLineChart(temperatures);
   drawChartCanvas();
@@ -55,20 +64,18 @@ function displayAllData(data) {
 }
 
 function getTemperaturePerHour(data) {
-  let forecastTemperatures = [];
-  for (let i = 0; i < 24; i++) {
-    const temperature = data.forecast.forecastday[0].hour[i].temp_c;
-    forecastTemperatures.push(temperature);
-  }
-  return forecastTemperatures;
+  const hours = data.forecast.forecastday[0].hour;
+  return hours.map((hour) => hour.temp_c);
 }
 
-const menuIcon = document.querySelector(".menuIcon");
-menuIcon.addEventListener("click", (event) => {
-  const searchContainer = document.querySelector(".searchContainer");
-  if (searchContainer.style.display === "none") {
-    searchContainer.style.display = "block";
-  } else {
-    searchContainer.style.display = "none";
-  }
-});
+function setupMenu() {
+  const menuIcon = document.querySelector(".menuIcon");
+  menuIcon.addEventListener("click", () => {
+    const searchContainer = document.querySelector(".searchContainer");
+    if (searchContainer.style.display === "none") {
+      searchContainer.style.display = "block";
+    } else {
+      searchContainer.style.display = "none";
+    }
+  });
+}

@@ -11,6 +11,10 @@ export function rainEffect() {
     drop.style.left = `${dropPosX}%`;
     const dropDelay = Math.random() * -3;
     drop.style.animationDelay = `${dropDelay}s`;
+
+    // css variable
+    // drop.style["--animation-delay"] = dropDelay
+
     animationEffect.appendChild(drop);
   }
 }

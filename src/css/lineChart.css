@@ -4,6 +4,7 @@
   flex-direction: column;
   width: 40rem;
   margin: auto;
+  padding-bottom: 1rem;
 }
 .lineChart {
   width: 100%;
@@ -43,3 +44,33 @@
   font-size: 1rem;
   text-align: center;
 }
+@media screen and (min-width: 1750px) {
+  .lineChartWrapper {
+    width: 60rem;
+  }
+
+  .minPoint::before {
+    bottom: 400%;
+    transform: translateX(0%);
+    font-size: 1.2rem;
+  }
+  .maxPoint::before {
+    bottom: 1200%;
+    transform: translateX(0%);
+    font-size: 1.2rem;
+  }
+}
+/* @media screen and (max-width: 1100px) {
+  .lineChartWrapper {
+    width: 30rem;
+  }
+
+  .minPoint::before {
+    bottom: 100%;
+    transform: translateX(-30%);
+    font-size: 0.8rem;
+  }
+  .maxPoint::before {
+    font-size: 0.8rem;
+  }
+} */
