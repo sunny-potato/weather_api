@@ -22,7 +22,7 @@
 
 /* no found*/
 .noFound {
-  /* visibility: hidden; */
+  visibility: hidden;
   position: absolute;
   top: 50%;
   left: 50%;

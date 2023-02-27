@@ -14,17 +14,10 @@ import {
 import { displayFutureWeatherData } from "./futureWeather";
 import { getInvalidRequest, deleteErrorMessage } from "./error";
 
-loadDefaultData();
+const defaultApiData = await callApi("oslo");
+loadApiData(defaultApiData);
 setupSearchField();
 setupMenu();
-
-async function loadDefaultData() {
-  const defaultApiData = await callApi("oslo");
-  displayDateAndTimeData(defaultApiData);
-  displayAllWeatherData(defaultApiData);
-  displayLineChardData(defaultApiData);
-  // console.log(defaultApiData);
-}
 
 function setupSearchField() {
   const inputText = document.querySelector(".searchText");
@@ -32,19 +25,25 @@ function setupSearchField() {
     deleteErrorMessage();
     if (event.key === "Enter") {
       const keyword = event.target.value;
-      const data = await callApi(keyword);
-      if (data.error) {
-        getInvalidRequest(data.error);
+      const inputData = await callApi(keyword);
+      if (inputData.error) {
+        getInvalidRequest(inputData.error);
       } else {
-        displayAllWeatherData(data);
+        loadApiData(inputData);
       }
     }
   });
 }
 
+async function loadApiData(apiData) {
+  displayDateAndTimeData(apiData);
+  displayAllWeatherData(apiData);
+  displayLineChardData(apiData);
+}
+
 function displayDateAndTimeData(data) {
-  const date = data.location.localtime;
-  getLocalDate(date);
+  const localDate = data.location.localtime;
+  getLocalDate(localDate);
   const localTimeZone = data.location.tz_id;
   setTimeZone(localTimeZone);
 }
@@ -52,7 +51,6 @@ function displayDateAndTimeData(data) {
 function displayAllWeatherData(data) {
   displayWeatherData(data);
   displayWeatherExtraData(data);
-  // console.log(data);
   displayFutureWeatherData(data);
 }
 

@@ -55,22 +55,18 @@ function displayLocalDate(data) {
 }
 
 let localTimeZone = undefined;
-
 export function setTimeZone(timeZone) {
   localTimeZone = timeZone;
-  console.log("LOCALTIMEzone : ", localTimeZone);
 }
 
 export function getLocalTime() {
   const searchedTimezone = new Date().toLocaleString("en-GB", {
     timeZone: localTimeZone,
   });
-  console.log(new Date(searchedTimezone).getHours());
-  let localHours = new Date(searchedTimezone).getHours();
-  let localMinutes = new Date(searchedTimezone).getMinutes();
-  let localSeconds = new Date(searchedTimezone).getSeconds();
+  let localHours = Number(searchedTimezone.slice(12, 14));
+  let localMinutes = Number(searchedTimezone.slice(15, 17));
+  let localSeconds = Number(searchedTimezone.slice(18, 20));
   let amORpm = "AM";
-  console.log(localHours);
 
   if (localHours > 12) {
     localHours = localHours - 12;
@@ -87,7 +83,6 @@ export function getLocalTime() {
   }
 
   const completeLocalTime = `${localHours} : ${localMinutes} : ${localSeconds} ${amORpm}`;
-  console.log(completeLocalTime);
   const localFullTime = document.querySelector(".localTime");
   localFullTime.innerHTML = `${completeLocalTime}`;
 }

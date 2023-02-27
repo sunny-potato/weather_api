@@ -14,7 +14,7 @@
   position: absolute;
   background-color: white;
   animation: rainEffect 3s linear infinite;
-  /* css variable 
+  /* better way  -> css variable 
   animation-delay: var(--animation-delay);
  */
 }

@@ -28,7 +28,7 @@ export function getWeatherImage(code, isDay) {
   //   listOfImages[i].style.visibility = "hidden";
   // }
 
-  // Fancy måte
+  // Fancy way
   for (const image of listOfImages) {
     image.style.visibility = "hidden";
   }
