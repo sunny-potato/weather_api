@@ -15,12 +15,12 @@ import { displayFutureWeatherData } from "./futureWeather";
 import { getInvalidRequest, deleteErrorMessage } from "./error";
 
 const defaultApiData = await callApi("oslo");
+const inputText = document.querySelector(".searchText");
 loadApiData(defaultApiData);
 setupSearchField();
 setupMenu();
 
 function setupSearchField() {
-  const inputText = document.querySelector(".searchText");
   inputText.addEventListener("keydown", async (event) => {
     deleteErrorMessage();
     if (event.key === "Enter") {
@@ -34,6 +34,17 @@ function setupSearchField() {
     }
   });
 }
+
+const searchButton = document.querySelector(".searchButton");
+searchButton.addEventListener("click", async () => {
+  const keyword = inputText.value;
+  const inputData = await callApi(keyword);
+  if (inputData.error) {
+    getInvalidRequest(inputData.error);
+  } else {
+    loadApiData(inputData);
+  }
+});
 
 async function loadApiData(apiData) {
   displayDateAndTimeData(apiData);

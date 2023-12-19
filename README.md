@@ -29,7 +29,7 @@ git clone "https://github.com/sunny-potato/weather_api.git"
 cd weather_api
 ```
 
-- If Vite is not installed, install Vite
+- Install Vite
 
 ```bash
 npm install

@@ -10,8 +10,14 @@ export function displayError() {
 export function getInvalidRequest(error) {
   const errorCode = error.code;
   let errorMessage;
-  if (errorCode == 1006) {
+  if (errorCode === 1006) {
     errorMessage = error.message;
+  }
+  if (errorCode === 400 || errorCode === 1003) {
+    errorMessage = "Search keyword is missing";
+  }
+  if (errorMessage === undefined) {
+    errorMessage = "Error, please try it again later";
   }
   displayErrorMessage(errorMessage);
 }
